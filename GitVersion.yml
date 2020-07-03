@@ -1,7 +1,19 @@
 assembly-versioning-scheme: MajorMinorPatch
+continuous-delivery-fallback-tag: ci
+
 branches:
   master:
-    tag: beta
+    mode: ContinuousDeployment
+    tag:
+    increment: Patch
+    prevent-increment-of-merged-branch-version: true
+    track-merge-target: false
+  develop:
+    mode: ContinuousDeployment
+    tag: unstable
+    increment: Minor
+    prevent-increment-of-merged-branch-version: false
+    track-merge-target: true
 ignore:
   sha: 
     - 0e77e2e16a136a1cd0f0474fe5710f617d508d81
